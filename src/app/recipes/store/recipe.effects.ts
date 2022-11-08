@@ -15,7 +15,7 @@ export class RecipeEffects {
     ofType(RecipesActions.FETCH_RECIPES),
     switchMap(() => {
       return this.http.get<Recipe[]>(
-        'https://angular-recipes-c9abc-default-rtdb.firebaseio.com/recipes.json'
+        'FIREBASE REALTIME DATABASE URL/recipes.json'
       );
     }),
     map(recipes => {
@@ -37,7 +37,7 @@ export class RecipeEffects {
     withLatestFrom(this.store.select('recipes')),
     switchMap(([actionData, recipesState]) => {
       return this.http.put(
-        'https://angular-recipes-c9abc-default-rtdb.firebaseio.com/recipes.json',
+        'FIREBASE REALTIME DATABASE URL/recipes.json',
         recipesState.recipes
       );
     })
